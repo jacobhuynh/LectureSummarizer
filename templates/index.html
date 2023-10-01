@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+</head>
+<body>
+    <div id="speechContainer">
+        <h1> Upload New File </h1>
+        <form method ="post" enctype="multipart/form-data">
+            <input type="file" name ="file" />
+            <br>
+            <input onclick="setLoading()" type="submit" value="Transcribe" />
+            <script>
+                function setLoading() {
+                    document.getElementById("preTranscript").innerHTML = "Loading";
+                }
+            </script>
+        </form>
+        {% if transcript == ""%}
+        <div id="transcriptContainer">
+            <p id="preTranscript"> Transcript will appear here.</p>
+        {% endif %}
+
+        {% if transcript != ""%}
+        <div id="speechTranscriptContainer">
+            <h1>Transcript</h1>
+            <p>{{transcript}}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
